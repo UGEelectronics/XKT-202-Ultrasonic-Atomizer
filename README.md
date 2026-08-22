@@ -10,16 +10,17 @@ Available as a **fully assembled module** or as an **empty PCB** for DIY solderi
 
 ## Buy options
 
-- Full assembled module: [Buy here](https://uge-one.com/?s=XKT-202&post_type=product)
+- Full assembled module: [Buy here](https://uge-one.com/?s=XKT-202+assembled&post_type=product)
 - Empty PCB for DIY soldering: [Buy here](https://uge-one.com/product/xkt-202-ultrasonic-atomizer-driver-bare-pcb-108khz-water-level-detection-diy/)
 
 Product page: [XKT-202 Ultrasonic Atomizer Driver Bare PCB](https://uge-one.com/product/xkt-202-ultrasonic-atomizer-driver-bare-pcb-108khz-water-level-detection-diy/)
 
 ## Assembly guide
 
-Open the interactive assembly guide in your browser:
+GitHub’s file view shows HTML as source. Open the **rendered** guide here:
 
-- **[XKT202 humidifier.html](XKT202%20humidifier.html)** — soldering steps, BOM, connections, and wiring notes
+- **[Assembly guide (opens in browser)](https://ugeelectronics.github.io/XKT-202-Ultrasonic-Atomizer/)** — soldering steps, BOM, connections, and wiring notes
+- Source file in the repo: [`XKT202 humidifier.html`](XKT202%20humidifier.html)
 
 ## Key features
 
