@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XKT-202 Humidifier — Assembly Guide | UGE Electronics</title>
+  <meta name="description" content="Assembly guide for the XKT-202 Ultrasonic Atomizer Driver PCB: BOM, soldering order, wiring, and water-level detection.">
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --ink: #152033;
+      --muted: #5b6b82;
+      --accent: #0b6e99;
+      --accent-soft: #e6f4fa;
+      --line: #d7e0ec;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, #d9eef8 0, transparent 40%),
+        radial-gradient(circle at bottom left, #e8f5ee 0, transparent 35%),
+        var(--bg);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 28px 18px 64px; }
+    header {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 10px 30px rgba(21, 32, 51, 0.06);
+    }
+    .brand {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    h1 { margin: 0 0 10px; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+    .lead { margin: 0; color: var(--muted); max-width: 62ch; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; font-weight: 600; font-size: 14px;
+      padding: 10px 14px; border-radius: 999px;
+      border: 1px solid var(--line); color: var(--ink); background: #fff;
+    }
+    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn:hover { filter: brightness(0.97); }
+    nav.toc {
+      margin: 22px 0;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+    nav.toc strong { display: block; margin-bottom: 8px; }
+    nav.toc a { color: var(--accent); text-decoration: none; margin-right: 14px; font-size: 14px; }
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px 20px;
+      margin: 16px 0;
+    }
+    h2 { margin: 0 0 12px; font-size: 1.25rem; }
+    h3 { margin: 18px 0 8px; font-size: 1.05rem; }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 0 0 12px; padding-left: 1.2rem; }
+    li { margin: 4px 0; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+      overflow-x: auto; display: block;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: var(--accent-soft); }
+    .media {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 760px) {
+      .media.two { grid-template-columns: 1fr 1fr; }
+    }
+    figure {
+      margin: 0;
+      background: #f8fbfe;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    figure img { width: 100%; height: auto; display: block; border-radius: 8px; }
+    figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }
+    .note, .warn {
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 12px 0 0;
+      font-size: 14px;
+    }
+    .note { background: var(--accent-soft); color: #0a4f6e; }
+    .warn { background: #fff7e6; color: #7a5200; border: 1px solid #f0d9a0; }
+    .step-num {
+      display: inline-flex; width: 26px; height: 26px; border-radius: 50%;
+      align-items: center; justify-content: center;
+      background: var(--accent); color: #fff; font-size: 13px; font-weight: 700;
+      margin-right: 8px;
+    }
+    footer {
+      margin-top: 24px; color: var(--muted); font-size: 13px; text-align: center;
+    }
+    code { background: #eef3f8; padding: 1px 6px; border-radius: 4px; font-size: 0.92em; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">UGE Electronics · XKT-202</div>
+      <h1>Ultrasonic Atomizer / Humidifier PCB — Assembly Guide</h1>
+      <p class="lead">
+        Step-by-step guide to solder and wire the XKT-202 ultrasonic atomizer driver board
+        for a 108&nbsp;kHz piezo mist generator with water-level detection.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="https://uge-one.com/product/xkt-202-ultrasonic-atomizer-driver-bare-pcb-108khz-water-level-detection-diy/">Buy empty PCB</a>
+        <a class="btn" href="https://github.com/UGEelectronics/XKT-202-Ultrasonic-Atomizer">GitHub repo</a>
+        <a class="btn" href="Module_Schematic.png">Open schematic</a>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Table of contents">
+      <strong>On this page</strong>
+      <a href="#overview">Overview</a>
+      <a href="#bom">BOM</a>
+      <a href="#solder">Soldering order</a>
+      <a href="#wiring">Wiring</a>
+      <a href="#test">First power-up</a>
+      <a href="#safety">Safety</a>
+    </nav>
+
+    <section id="overview">
+      <h2>Board overview</h2>
+      <div class="media two">
+        <figure>
+          <img src="XKT-202%20PCB.jpg" alt="Assembled XKT-202 PCB 3D view">
+          <figcaption>PCB layout — power on the right, piezo on the left, L1 at the top.</figcaption>
+        </figure>
+        <figure>
+          <img src="Module_Schematic.png" alt="XKT-202 circuit schematic">
+          <figcaption>Schematic — XKT-202, AO3400A, tapped inductor, sensing network.</figcaption>
+        </figure>
+      </div>
+      <ul>
+        <li><strong>IC:</strong> XKT-202 (SOP-8)</li>
+        <li><strong>Supply:</strong> typically 5&nbsp;V (range about 3.0–5.5&nbsp;V)</li>
+        <li><strong>Frequency:</strong> ~108&nbsp;kHz ultrasonic drive</li>
+        <li><strong>Power:</strong> typically 1.5–3&nbsp;W with a ~16&nbsp;mm piezo disc</li>
+        <li><strong>Feature:</strong> water-level monitoring via <code>TP3</code></li>
+      </ul>
+    </section>
+
+    <section id="bom">
+      <h2>Bill of materials</h2>
+      <table>
+        <thead>
+          <tr><th>Ref</th><th>Value / part</th><th>Package / notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>U2</td><td>XKT-202</td><td>SOP-8 controller</td></tr>
+          <tr><td>Q1</td><td>AO3400A</td><td>SOT-23 N-MOSFET</td></tr>
+          <tr><td>L1</td><td>~25 µH / ~800 µH tapped inductor</td><td>CD75-style 3-pin boost inductor</td></tr>
+          <tr><td>R1</td><td>113 kΩ</td><td>Timing / frequency set</td></tr>
+          <tr><td>R2</td><td>4.7 MΩ</td><td>NF / sensing pull-down</td></tr>
+          <tr><td>C1</td><td>470 pF</td><td>ON/OFF filter</td></tr>
+          <tr><td>C2</td><td>100 nF</td><td>0603 / sensing filter</td></tr>
+          <tr><td>C3</td><td>47 µF</td><td>Supply decoupling</td></tr>
+          <tr><td>Piezo</td><td>108 kHz atomizer disc (~16 mm)</td><td>Wire to Piezo+ / Piezo−</td></tr>
+        </tbody>
+      </table>
+      <p class="note">
+        Matching parts on UGE store:
+        <a href="https://uge-one.com/product/xkt-202-108khz-humidifier-atomizer-controller-with-water-sensing-cutoff-ic-sop8/">XKT-202 IC</a> ·
+        <a href="https://uge-one.com/product/cd75-3-pin-smd-boost-atomization-humidifier-inductor-25800uh/">25/800 µH inductor</a> ·
+        <a href="https://uge-one.com/product/16mm-108khz-universal-humidifier-atomizer-ceramic-ultrasonic-head/">16 mm / 108 kHz head</a>
+      </p>
+    </section>
+
+    <section id="solder">
+      <h2>Recommended soldering order</h2>
+      <ol>
+        <li><span class="step-num">1</span>Solder <strong>R1</strong> (113 kΩ) and <strong>R2</strong> (4.7 MΩ).</li>
+        <li><span class="step-num">2</span>Solder capacitors <strong>C1</strong>, <strong>C2</strong>, then bulk cap <strong>C3</strong> (mind polarity if electrolytic/tantalum).</li>
+        <li><span class="step-num">3</span>Solder <strong>Q1</strong> (AO3400A). Match the silkscreen orientation.</li>
+        <li><span class="step-num">4</span>Solder <strong>U2</strong> (XKT-202). Pin 1 must match the silkscreen mark.</li>
+        <li><span class="step-num">5</span>Solder <strong>L1</strong> last (largest part). Confirm the 3-pin / tapped orientation against the schematic.</li>
+        <li><span class="step-num">6</span>Inspect for bridges on SOP-8 and SOT-23 pins under good light or magnification.</li>
+      </ol>
+      <div class="warn">
+        <strong>Before power:</strong> check MOSFET orientation, IC pin 1, inductor pinout, and that no solder bridges remain on fine-pitch pins.
+      </div>
+    </section>
+
+    <section id="wiring">
+      <h2>External wiring</h2>
+      <table>
+        <thead>
+          <tr><th>Pad</th><th>Connect to</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>+5V</code> (U6)</td><td>Regulated 5 V supply positive</td></tr>
+          <tr><td><code>GND</code> (U7)</td><td>Supply ground</td></tr>
+          <tr><td><code>Piezo+</code> (U4)</td><td>Atomizer disc lead</td></tr>
+          <tr><td><code>Piezo−</code> (U5)</td><td>Atomizer disc lead</td></tr>
+          <tr><td><code>TP1</code> / <code>TP2</code></td><td>Optional ON/OFF switch (short to enable per schematic)</td></tr>
+          <tr><td><code>TP3</code></td><td>Water-level monitoring / sensing electrode point</td></tr>
+        </tbody>
+      </table>
+      <h3>Water-level detection</h3>
+      <p>
+        <code>TP3</code> is the water-level monitoring point feeding the XKT-202 <code>NF</code> pin through the onboard
+        sensing network (<code>R2</code>, <code>C2</code>). When water is insufficient, the controller can stop the drive
+        to protect the piezo disc from dry running.
+      </p>
+    </section>
+
+    <section id="test">
+      <h2>First power-up checklist</h2>
+      <ol>
+        <li>Use a current-limited 5&nbsp;V supply (about 1&nbsp;A capable is a safe choice).</li>
+        <li>Place the piezo disc in water (typical depth roughly 15–50&nbsp;mm above the disc for similar modules).</li>
+        <li>Connect Piezo+/Piezo−, then apply power.</li>
+        <li>Confirm mist output and that the board stops or protects when water is removed / sensing indicates dry.</li>
+        <li>If there is no mist: check water coverage, supply voltage under load, inductor orientation, and piezo frequency rating.</li>
+      </ol>
+    </section>
+
+    <section id="safety">
+      <h2>Safety &amp; care</h2>
+      <ul>
+        <li>Do not run the piezo dry for long periods.</li>
+        <li>Keep the PCB itself dry — only the atomizer head belongs in water.</li>
+        <li>Prefer clean or distilled water; clean the disc and container regularly.</li>
+        <li>This guide is for DIY electronics assembly; follow local electrical safety practices.</li>
+      </ul>
+    </section>
+
+    <footer>
+      © 2026 UGE Electronics ·
+      <a href="https://uge-one.com/">uge-one.com</a> ·
+      <a href="https://github.com/UGEelectronics/XKT-202-Ultrasonic-Atomizer">GitHub</a>
+    </footer>
+  </div>
+</body>
+</html>
